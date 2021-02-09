@@ -70,9 +70,9 @@ for TARGET in ${XPMLIST[@]}
 do
     RES=`echo $TARGET | sed 's/^\(.*\):.*$/\1/'`
     IMG=`echo $TARGET | sed 's/^.*:\(.*\)$/\1/'`
-    pngtopnm "$TRANSPARENT" | pnmscale -xysize $RES $RES > temp_image
-    pngtopnm -alpha "$TRANSPARENT" | pnmscale -xysize $RES $RES > temp_mask
-    ppmtoxpm -alphamask=temp_mask temp_image > $IMG
+    pngtopnm "$TRANSPARENT" | pnmscale -xysize $RES $RES > icon_${RES}_xpm
+    pngtopnm -alpha "$TRANSPARENT" | pnmscale -xysize $RES $RES > icon_${RES}_mask
+    ppmtoxpm -alphamask=icon_${RES}_mask icon_${RES}_xpm > $IMG
 done
 
-rm -f temp_image temp_mask
+rm -f icon_*_xpm icon_*_mask
