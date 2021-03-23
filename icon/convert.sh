@@ -27,6 +27,7 @@ OPAQUELIST=(
 87:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-87.png
 57:iphone/about-icon.png
 114:iphone/about-icon@2x.png
+64:iphone/simpleserver/site-icon.png
 )
 
 TRANSPARENTLIST=(
