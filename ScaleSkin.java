@@ -57,11 +57,19 @@ public class ScaleSkin {
         }
     }
 
+    private static int floor(double x) {
+        return (int) Math.floor(x);
+    }
+
+    private static int ceil(double x) {
+        return (int) Math.ceil(x);
+    }
+
     private static String transformPoint(String p, int offset) {
         StringTokenizer tok = new StringTokenizer(p, ",");
         int x = Integer.parseInt(tok.nextToken());
         int y = Integer.parseInt(tok.nextToken());
-        return Math.floor(x * SCALE) + "," + (Math.floor(y * SCALE) + offset);
+        return floor(x * SCALE) + "," + (floor(y * SCALE) + offset);
     }
 
     private static String transformRect(String p, int offset) {
@@ -70,7 +78,7 @@ public class ScaleSkin {
         int y = Integer.parseInt(tok.nextToken());
         int w = Integer.parseInt(tok.nextToken());
         int h = Integer.parseInt(tok.nextToken());
-        return Math.floor(x * SCALE) + "," + (Math.floor(y * SCALE) + offset)
-            + "," + Math.ceil(w * SCALE) + "," + Math.ceil(h * SCALE);
+        return floor(x * SCALE) + "," + (floor(y * SCALE) + offset)
+            + "," + ceil(w * SCALE) + "," + ceil(h * SCALE);
     }
 }
