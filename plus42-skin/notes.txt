@@ -1,0 +1,9 @@
+Fonts: key caps: Arial Narrow Condensed 28, ffffff
+       shifted: Arial 19, ffb800
+       use kerning as needed. I used 0 pt for very short labels, -1 for
+       most, and -2 for UNITS.
+       use leading space to prevent kerning from damaging the first char
+
+The slightly mis-matched backgrounds for the R of R↑ and of X<>Y can be fixed
+by redoing those two layers, copying them from the background half of the
+bitmap this time, rather than copying the ones from the left.
