@@ -22,6 +22,8 @@ public class SkinMuncher {
     }
     
     private static int outputWidth, outputHeight;
+    private static int skinWidth, skinHeight;
+    private static int displayWidth, displayHeight;
     private static List<Mapping> mappings = new ArrayList<Mapping>();
     
     private static class ParseException extends RuntimeException {
@@ -67,6 +69,12 @@ public class SkinMuncher {
                 } else if (t.equals("size")) {
                     outputWidth = Integer.parseInt(tok.nextToken());
                     outputHeight = Integer.parseInt(tok.nextToken());
+                } else if (t.equals("skin")) {
+                    skinWidth = Integer.parseInt(tok.nextToken());
+                    skinHeight = Integer.parseInt(tok.nextToken());
+                } else if (t.equals("displaysize")) {
+                    displayWidth = Integer.parseInt(tok.nextToken());
+                    displayHeight = Integer.parseInt(tok.nextToken());
                 } else {
                     throw new Exception("unrecognized token \"" + t + "\"");
                 }
@@ -113,14 +121,48 @@ public class SkinMuncher {
         throw new Exception("unmappable point: " + coords);
     }
     
+    private static int min(int x, int y) {
+        return x < y ? x : y;
+    }
+
+    private static int max(int x, int y) {
+        return x > y ? x : y;
+    }
+
+    private static int abs(int x) {
+        return x < 0 ? -x : x;
+    }
+
+    private static int rectOverlap(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
+        if (x1 + w1 < x2 || x2 + w2 < x1)
+            return 0;
+        if (y1 + h1 < y2 || y2 + h2 < y1)
+            return 0;
+        int w = min(x1 + w1, x2 + w2) - max(x1, x2);
+        int h = min(y1 + h1, y2 + h2) - max(y1, y2);
+        return abs(w * h);
+    }
+
     private static String transformRect(String coords) throws Exception {
-        int comma = coords.indexOf(',');
-        if (comma == -1)
-            throw new Exception("bad rect: " + coords);
-        comma = coords.indexOf(',', comma + 1);
-        if (comma == -1)
-            throw new Exception("bad rect: " + coords);
-        return transformPoint(coords.substring(0, comma)) + coords.substring(comma);
+        StringTokenizer tok = new StringTokenizer(coords, ",");
+        int x = Integer.parseInt(tok.nextToken());
+        int y = Integer.parseInt(tok.nextToken());
+        int w = Integer.parseInt(tok.nextToken());
+        int h = Integer.parseInt(tok.nextToken());
+        int xo = 0, yo = 0;
+        int amt = 0;
+        for (int i = 0; i < mappings.size(); i++) {
+            Mapping mapping = mappings.get(i);
+            int a = rectOverlap(x, y, w, h, mapping.srcX, mapping.srcY, mapping.srcWidth, mapping.srcHeight);
+            if (a > amt) {
+                xo = mapping.srcX - mapping.dstX;
+                yo = mapping.srcY - mapping.dstY;
+                amt = a;
+            }
+        }
+        if (amt == 0)
+            throw new Exception("unmappable point: " + coords);
+        return (x - xo) + "," + (y - yo) + "," + w + "," + h;
     }
     
     private static void munchLayout() throws Exception {
@@ -133,7 +175,7 @@ public class SkinMuncher {
             if (line.startsWith("Skin:")) {
                 buf.append(tok.nextToken());
                 buf.append(" ");
-                buf.append(transformRect(tok.nextToken()));
+                buf.append("0,0," + skinWidth + "," + skinHeight);
                 writer.println(buf.toString());
             } else if (line.startsWith("Display:")) {
                 buf.append(tok.nextToken());
@@ -144,6 +186,8 @@ public class SkinMuncher {
                     buf.append(tok.nextToken());
                 }
                 writer.println(buf.toString());
+                if (skinWidth > skinHeight)
+                    writer.println("DisplaySize: " + displayWidth + "," + displayHeight + " -1 -1 " + displayHeight);
             } else if (line.startsWith("Key:")) {
                 buf.append(tok.nextToken());
                 buf.append(" ");
@@ -184,6 +228,10 @@ public class SkinMuncher {
                 throw new Exception("no output name specified");
             if (outputWidth == 0 || outputHeight == 0)
                 throw new Exception("no output size specified");
+            if (skinWidth == 0 || skinHeight == 0)
+                throw new Exception("no skin size specified");
+            if (skinWidth > skinHeight && (displayWidth == 0 || displayHeight == 0))
+                throw new Exception("no display size specified");
             if (mappings.isEmpty())
                 throw new Exception("no mappings specified");
             munchGif();
