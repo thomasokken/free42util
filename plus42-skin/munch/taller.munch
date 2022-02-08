@@ -1,0 +1,9 @@
+input /Users/thomas/Desktop/Plus42Skin/Plus42
+output /Users/thomas/Desktop/plus42dir/munch-taller
+#size 1280 1328
+skin 640 1328
+map 0 0 1280 216 to 0 0
+map 0 120 1280 96 to 0 216
+map 0 120 1280 64 to 0 312
+map 0 216 1280 952 to 0 376
+
