@@ -39,6 +39,7 @@ public class SkinMuncher {
         BufferedReader reader = new BufferedReader(new InputStreamReader(is));
         String line;
         int lineno = 0;
+        int skipped = 0;
         while ((line = reader.readLine()) != null) {
             lineno++;
             int hash = line.indexOf('#');
@@ -66,9 +67,37 @@ public class SkinMuncher {
                     m.dstX = Integer.parseInt(tok.nextToken());
                     m.dstY = Integer.parseInt(tok.nextToken());
                     mappings.add(m);
-                } else if (t.equals("size")) {
-                    outputWidth = Integer.parseInt(tok.nextToken());
-                    outputHeight = Integer.parseInt(tok.nextToken());
+                } else if (t.equals("skip")) {
+                    Mapping m = mappings.remove(mappings.size() - 1);
+                    while (tok.hasMoreTokens()) {
+                        String range = tok.nextToken();
+                        int dash = range.indexOf('-');
+                        int from, to;
+                        if (dash == -1)
+                            from = to = Integer.parseInt(range);
+                        else {
+                            from = Integer.parseInt(range.substring(0, dash));
+                            to = Integer.parseInt(range.substring(dash + 1));
+                        }
+                        if (to < from || from < m.srcY || to > m.srcY + m.srcHeight)
+                            throw new Exception("bad skipper " + range);
+                        skipped += to - from;
+                        if (from > m.srcY) {
+                            Mapping nm = new Mapping();
+                            nm.srcX = m.srcX;
+                            nm.srcY = m.srcY;
+                            nm.srcWidth = m.srcWidth;
+                            nm.srcHeight = from - m.srcY;
+                            nm.dstX = m.dstX;
+                            nm.dstY = m.dstY;
+                            mappings.add(nm);
+                            m.dstY += nm.srcHeight;
+                        }
+                        m.srcHeight -= to - m.srcY;
+                        m.srcY = to;
+                    }
+                    if (m.srcHeight > 0)
+                        mappings.add(m);
                 } else if (t.equals("skin")) {
                     skinWidth = Integer.parseInt(tok.nextToken());
                     skinHeight = Integer.parseInt(tok.nextToken());
@@ -86,6 +115,16 @@ public class SkinMuncher {
                 throw new ParseException(lineno, e);
             }
         }
+        for (int i = 0; i < mappings.size(); i++) {
+            Mapping m = mappings.get(i);
+            int bottom = m.dstY + m.srcHeight;
+            int right = m.dstX + m.srcWidth;
+            if (bottom > outputHeight)
+                outputHeight = bottom;
+            if (right > outputWidth)
+                outputWidth = right;
+        }
+        skinHeight -= skipped;
     }
     
     private static void munchGif() throws IOException {
@@ -222,18 +261,16 @@ public class SkinMuncher {
         }
         try {
             loadMunchScript(args[0]);
+            if (mappings.isEmpty())
+                throw new Exception("no mappings specified");
             if (inputName == null)
                 throw new Exception("no input name specified");
             if (outputName == null)
                 throw new Exception("no output name specified");
-            if (outputWidth == 0 || outputHeight == 0)
-                throw new Exception("no output size specified");
             if (skinWidth == 0 || skinHeight == 0)
                 throw new Exception("no skin size specified");
             if (skinWidth > skinHeight && (displayWidth == 0 || displayHeight == 0))
                 throw new Exception("no display size specified");
-            if (mappings.isEmpty())
-                throw new Exception("no mappings specified");
             munchGif();
             munchLayout();
         } catch (Exception e) {
