@@ -1,5 +1,5 @@
-input /Users/thomas/Desktop/Plus42Skin/Plus42
-output /Users/thomas/Desktop/plus42dir/munch-landscape-l
+input ../Plus42
+output $APPSUPPORT/Plus42/munch-landscape-l
 #size 2560 656
 skin 1280 656
 displaysize 22 8

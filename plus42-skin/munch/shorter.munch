@@ -1,5 +1,5 @@
-input /Users/thomas/Desktop/Plus42Skin/Plus42
-output /Users/thomas/Desktop/plus42dir/munch-shorter
+input ../Plus42
+output $APPSUPPORT/Plus42/munch-shorter
 #size 1280 1168
 skin 640 1168
 map 0 0 1280 1168 to 0 0

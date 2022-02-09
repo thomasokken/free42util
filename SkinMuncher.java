@@ -54,7 +54,7 @@ public class SkinMuncher {
                 if (t.equals("input")) {
                     inputName = tok.nextToken();
                 } else if (t.equals("output")) {
-                    outputName = tok.nextToken();
+                    outputName = tok.nextToken().replace("$APPSUPPORT", System.getenv("HOME") + "/Library/Application Support");
                 } else if (t.equals("map")) {
                     Mapping m = new Mapping();
                     m.srcX = Integer.parseInt(tok.nextToken());
@@ -172,16 +172,6 @@ public class SkinMuncher {
         return x < 0 ? -x : x;
     }
 
-    private static int rectOverlap(int x1, int y1, int w1, int h1, int x2, int y2, int w2, int h2) {
-        if (x1 + w1 < x2 || x2 + w2 < x1)
-            return 0;
-        if (y1 + h1 < y2 || y2 + h2 < y1)
-            return 0;
-        int w = min(x1 + w1, x2 + w2) - max(x1, x2);
-        int h = min(y1 + h1, y2 + h2) - max(y1, y2);
-        return abs(w * h);
-    }
-
     private static String transformRect(String coords) throws Exception {
         StringTokenizer tok = new StringTokenizer(coords, ",");
         int x = Integer.parseInt(tok.nextToken());
@@ -190,18 +180,31 @@ public class SkinMuncher {
         int h = Integer.parseInt(tok.nextToken());
         int xo = 0, yo = 0;
         int amt = 0;
+        int cx = 0, cy = 0, cw = 0, ch = 0;
         for (int i = 0; i < mappings.size(); i++) {
             Mapping mapping = mappings.get(i);
-            int a = rectOverlap(x, y, w, h, mapping.srcX, mapping.srcY, mapping.srcWidth, mapping.srcHeight);
+            if (x + w < mapping.srcX || mapping.srcX + mapping.srcWidth < x)
+                continue;
+            if (y + h < mapping.srcY || mapping.srcY + mapping.srcHeight < y)
+                continue;
+            int xx = max(x, mapping.srcX);
+            int yy = max(y, mapping.srcY);
+            int ww = min(x + w, mapping.srcX + mapping.srcWidth) - xx;
+            int hh = min(y + h, mapping.srcY + mapping.srcHeight) - yy;
+            int a = ww * hh;
             if (a > amt) {
                 xo = mapping.srcX - mapping.dstX;
                 yo = mapping.srcY - mapping.dstY;
                 amt = a;
+                cx = xx;
+                cy = yy;
+                cw = ww;
+                ch = hh;
             }
         }
         if (amt == 0)
             throw new Exception("unmappable point: " + coords);
-        return (x - xo) + "," + (y - yo) + "," + w + "," + h;
+        return (cx - xo) + "," + (cy - yo) + "," + cw + "," + ch;
     }
     
     private static void munchLayout() throws Exception {
