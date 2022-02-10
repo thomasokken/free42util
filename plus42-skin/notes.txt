@@ -7,3 +7,8 @@ Fonts: key caps: Arial Narrow Condensed 28, ffffff
 The slightly mis-matched backgrounds for the R of R↑ and of X<>Y can be fixed
 by redoing those two layers, copying them from the background half of the
 bitmap this time, rather than copying the ones from the left.
+
+The desktop skin (plus42/skins/Plus42.*) was created by scaling the layout with
+ScaleSkin (which needs to be modified for the purpose, it's a very ugly hack
+that has just about everything hard-coded), and scaling the layout with:
+pngtopnm Plus42.png | pnmscale 0.5 | pnmquant 256 | ppmtogif > small.gif
