@@ -79,6 +79,14 @@ AltBkgd: 1 1108,4,120,84 374,1046
 AltBkgd: 2 654,2,192,84 224,670
 AltBkgd: 2 996,4,234,84 262,1046
 
+AltKey: 1 14 658,226
+AltKey: 1 15 760,226
+AltKey: 1 35 1000,226
+AltKey: 1 36 1124,226
+AltKey: 2 14 658,226
+AltKey: 2 15 760,226
+AltKey: 2 36 1124,226
+
 Macro: 38 "DIRS"
 Macro: 39 "DIR.FCN"
 Macro: 40 "UNITS"
