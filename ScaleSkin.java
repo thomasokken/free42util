@@ -2,12 +2,12 @@ import java.io.*;
 import java.util.*;
 
 public class ScaleSkin {
-    private static final double SCALE = 1.171875;
+    private static final double SCALE = 0.5;
 
     public static void main(String[] args) {
         try {
-            BufferedReader reader = new BufferedReader(new FileReader("Ehrling42sl.layout"));
-            PrintWriter writer = new PrintWriter("Ehrling42sl.X.layout");
+            BufferedReader reader = new BufferedReader(new FileReader("Plus42.layout"));
+            PrintWriter writer = new PrintWriter("/Users/thomas/plus42/skins/Plus42.layout");
             String line;
             while ((line = reader.readLine()) != null) {
                 StringTokenizer tok = new StringTokenizer(line, " ");
@@ -20,7 +20,7 @@ public class ScaleSkin {
                 } else if (line.startsWith("Display:")) {
                     buf.append(tok.nextToken());
                     buf.append(" ");
-                    buf.append(transformPoint(tok.nextToken(), 84));
+                    buf.append(transformPoint(tok.nextToken(), 0));
                     String t;
                     while (tok.hasMoreTokens()) {
                         buf.append(" ");
@@ -32,20 +32,29 @@ public class ScaleSkin {
                     buf.append(" ");
                     buf.append(tok.nextToken());
                     buf.append(" ");
-                    buf.append(transformRect(tok.nextToken(), 168));
+                    buf.append(transformRect(tok.nextToken(), 0));
                     buf.append(" ");
-                    buf.append(transformRect(tok.nextToken(), 168));
+                    buf.append(transformRect(tok.nextToken(), 0));
                     buf.append(" ");
-                    buf.append(transformPoint(tok.nextToken(), 168));
+                    buf.append(transformPoint(tok.nextToken(), 0));
                     writer.println(buf.toString());
-                } else if (line.startsWith("Annunciator:")) {
+                } else if (line.startsWith("Annunciator:") || line.startsWith("AltBkgd:")) {
                     buf.append(tok.nextToken());
                     buf.append(" ");
                     buf.append(tok.nextToken());
                     buf.append(" ");
-                    buf.append(transformRect(tok.nextToken(), 84));
+                    buf.append(transformRect(tok.nextToken(), 0));
                     buf.append(" ");
-                    buf.append(transformPoint(tok.nextToken(), 252));
+                    buf.append(transformPoint(tok.nextToken(), 0));
+                    writer.println(buf.toString());
+                } else if (line.startsWith("AltKey:")) {
+                    buf.append(tok.nextToken());
+                    buf.append(" ");
+                    buf.append(tok.nextToken());
+                    buf.append(" ");
+                    buf.append(tok.nextToken());
+                    buf.append(" ");
+                    buf.append(transformPoint(tok.nextToken(), 0));
                     writer.println(buf.toString());
                 } else {
                     writer.println(line);
