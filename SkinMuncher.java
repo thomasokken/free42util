@@ -241,12 +241,21 @@ public class SkinMuncher {
                 buf.append(" ");
                 buf.append(transformPoint(tok.nextToken()));
                 writer.println(buf.toString());
-            } else if (line.startsWith("Annunciator:")) {
+            } else if (line.startsWith("Annunciator:") || line.startsWith("AltBkgd:")) {
                 buf.append(tok.nextToken());
                 buf.append(" ");
                 buf.append(tok.nextToken());
                 buf.append(" ");
                 buf.append(transformRect(tok.nextToken()));
+                buf.append(" ");
+                buf.append(transformPoint(tok.nextToken()));
+                writer.println(buf.toString());
+            } else if (line.startsWith("AltKey:")) {
+                buf.append(tok.nextToken());
+                buf.append(" ");
+                buf.append(tok.nextToken());
+                buf.append(" ");
+                buf.append(tok.nextToken());
                 buf.append(" ");
                 buf.append(transformPoint(tok.nextToken()));
                 writer.println(buf.toString());
