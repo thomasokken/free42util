@@ -81,7 +81,8 @@ public class SkinMuncher {
                         }
                         if (to < from || from < m.srcY || to > m.srcY + m.srcHeight)
                             throw new Exception("bad skipper " + range);
-                        skipped += to - from;
+                        if (m.srcX < skinWidth)
+                            skipped += to - from;
                         if (from > m.srcY) {
                             Mapping nm = new Mapping();
                             nm.srcX = m.srcX;
