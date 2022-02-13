@@ -25,6 +25,7 @@ public class SkinMuncher {
     private static int skinWidth, skinHeight;
     private static int displayWidth, displayHeight;
     private static List<Mapping> mappings = new ArrayList<Mapping>();
+    private static List<String> addenda = new ArrayList<String>();
     
     private static class ParseException extends RuntimeException {
         public ParseException(int line, Throwable cause) {
@@ -105,6 +106,8 @@ public class SkinMuncher {
                 } else if (t.equals("displaysize")) {
                     displayWidth = Integer.parseInt(tok.nextToken());
                     displayHeight = Integer.parseInt(tok.nextToken());
+                } else if (t.equals("add")) {
+                    addenda.append(line.substring(4).trim());
                 } else {
                     throw new Exception("unrecognized token \"" + t + "\"");
                 }
@@ -231,6 +234,8 @@ public class SkinMuncher {
                 writer.println(buf.toString());
                 if (skinWidth > skinHeight)
                     writer.println("DisplaySize: " + displayWidth + "," + displayHeight + " -1 -1 " + displayHeight);
+                for (int i = 0; i < addenda.size(); i++)
+                    writer.println(addenda.get(i));
             } else if (line.startsWith("Key:")) {
                 buf.append(tok.nextToken());
                 buf.append(" ");
