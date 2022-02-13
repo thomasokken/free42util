@@ -107,7 +107,7 @@ public class SkinMuncher {
                     displayWidth = Integer.parseInt(tok.nextToken());
                     displayHeight = Integer.parseInt(tok.nextToken());
                 } else if (t.equals("add")) {
-                    addenda.append(line.substring(4).trim());
+                    addenda.add(line.substring(4).trim());
                 } else {
                     throw new Exception("unrecognized token \"" + t + "\"");
                 }
