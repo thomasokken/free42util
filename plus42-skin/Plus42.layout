@@ -125,6 +125,7 @@ WinKey: 76       : 58
 WinKey: Shift 76 : 59
 WinKey: 88       : 60
 WinKey: Shift 88 : 61
+WinKey: 71       : 61
 
 MacKey: a : 50
 MacKey: A : 51
@@ -138,6 +139,7 @@ MacKey: l : 58
 MacKey: L : 59
 MacKey: x : 60
 MacKey: X : 61
+MacKey: g : 61
 
 GtkKey: a : 50
 GtkKey: A : 51
@@ -151,3 +153,4 @@ GtkKey: l : 58
 GtkKey: L : 59
 GtkKey: x : 60
 GtkKey: X : 61
+GtkKey: g : 61
