@@ -113,44 +113,62 @@ Macro: 59 "E^X"
 Macro: 60 "XEQ"
 Macro: 61 "GTO"
 
-WinKey: 65       : 50
+WinKey: 65 : 50
 WinKey: Shift 65 : 51
-WinKey: 86       : 52
+WinKey: CShift 65 : 51
+WinKey: 86 : 52
 WinKey: Shift 86 : 53
-WinKey: 81       : 54
+WinKey: CShift 86 : 53
+WinKey: 81 : 54
 WinKey: Shift 81 : 55
-WinKey: 79       : 56
+WinKey: CShift 81 : 55
+WinKey: 79 : 56
 WinKey: Shift 79 : 57
-WinKey: 76       : 58
+WinKey: CShift 79 : 57
+WinKey: 76 : 58
 WinKey: Shift 76 : 59
-WinKey: 88       : 60
+WinKey: CShift 76 : 59
+WinKey: 88 : 60
 WinKey: Shift 88 : 61
-WinKey: 71       : 61
+WinKey: CShift 88 : 61
+WinKey: 71 : 61
 
 MacKey: a : 50
 MacKey: A : 51
+MacKey: CShift a : 51
 MacKey: v : 52
 MacKey: V : 53
+MacKey: CShift v : 53
 MacKey: q : 54
 MacKey: Q : 55
+MacKey: CShift q : 55
 MacKey: o : 56
 MacKey: O : 57
+MacKey: CShift o : 57
 MacKey: l : 58
 MacKey: L : 59
+MacKey: CShift l : 59
 MacKey: x : 60
 MacKey: X : 61
+MacKey: CShift x : 61
 MacKey: g : 61
 
 GtkKey: a : 50
 GtkKey: A : 51
+GtkKey: CShift a : 51
 GtkKey: v : 52
 GtkKey: V : 53
+GtkKey: CShift v : 53
 GtkKey: q : 54
 GtkKey: Q : 55
+GtkKey: CShift q : 55
 GtkKey: o : 56
 GtkKey: O : 57
+GtkKey: CShift o : 57
 GtkKey: l : 58
 GtkKey: L : 59
+GtkKey: CShift l : 59
 GtkKey: x : 60
 GtkKey: X : 61
+GtkKey: CShift x : 61
 GtkKey: g : 61
