@@ -14,6 +14,16 @@ because you never know.
 ScaleSkin.java
 A little utility to help with resizing skins.
 
+plus42-skin
+SkinMuncher.java
+A skin specifically designed for Plus42, based on Tyge_Nova1, with two rows of
+keys added, and alternate key caps and backgrounds for the equation editor.
+SkinMuncher is a tool that transforms a skin by copying and pasting rectangular
+regions, doing a reasonable job of transforming the layout file to match. This
+was used to create the PortraitShort and Landscape skins for the Android and
+iOS versions. I didn't document SkinMuncher, but the source code plus the
+configuration files under plus42-skin/munch should help get started.
+
 icon
 The original photograph of my real HP-42S, which I used to create the Free42
 icon, plus various stages of editing that I had to do along the way. I once
