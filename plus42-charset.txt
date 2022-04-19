@@ -1,0 +1,138 @@
+  0: ÷ (keyboard)
+  1: × (keyboard)
+  2: √ MATH
+  3: ∫ MATH
+  4: ▒
+  5: Σ MATH
+  6: ▸
+  7: π (keyboard); MATH (*)
+  8: ¿ PUNC
+  9: ≤ <=>
+ 10:   PUNC
+ 11: ≥ <=>
+ 12: ≠ <=>
+ 13: ↵
+ 14: ↓ ←↑↓
+ 15: → ←↑↓
+ 16: ← ←↑↓
+ 17: μ MATH
+ 18: £ MISC
+ 19: ° MATH
+ 20: Å ABCDE
+ 21: Ñ NOPQ
+ 22: Ä ABCDE
+ 23: ∡ MATH
+ 24: ᴇ (keyboard)
+ 25: Æ ABCDE
+ 26: … PUNC
+ 27: [ESC]
+ 28: Ö NOPQ
+ 29: Ü RSTUV
+ 30: ↑ ←↑↓
+ 31: • MISC
+ 32:   (everywhere)
+ 33: ! PUNC
+ 34: " PUNC
+ 35: # MISC
+ 36: $ MISC
+ 37: % (keyboard)
+ 38: & MISC
+ 39: ' PUNC
+ 40: ( ()[]{}
+ 41: ) ()[]{}
+ 42: * MISC
+ 43: + (keyboard)
+ 44: , PUNC
+ 45: - (keyboard)
+ 46: . (keyboard)
+ 47: / MISC
+ 48: 0 (keyboard)
+ 49: 1 (keyboard)
+ 50: 2 (keyboard)
+ 51: 3 (keyboard)
+ 52: 4 (keyboard)
+ 53: 5 (keyboard)
+ 54: 6 (keyboard)
+ 55: 7 (keyboard)
+ 56: 8 (keyboard)
+ 57: 9 (keyboard)
+ 58: : PUNC
+ 59: ; PUNC
+ 60: < <=>
+ 61: = <=>
+ 62: > <=>
+ 63: ? PUNC
+ 64: @ MISC
+ 65: A ABCDE
+ 66: B ABCDE
+ 67: C ABCDE
+ 68: D ABCDE
+ 69: E ABCDE
+ 70: F FGHI
+ 71: G FGHI
+ 72: H FGHI
+ 73: I FGHI
+ 74: J JKLM
+ 75: K JKLM
+ 76: L JKLM
+ 77: M JKLM
+ 78: N NOPQ
+ 79: O NOPQ
+ 80: P NOPQ
+ 81: Q NOPQ
+ 82: R RSTUV
+ 83: S RSTUV
+ 84: T RSTUV
+ 85: U RSTUV
+ 86: V RSTUV
+ 87: W WXYZ
+ 88: X WXYZ
+ 89: Y WXYZ
+ 90: Z WXYZ
+ 91: [ ()[]{}
+ 92: \ MISC
+ 93: ] ()[]{}
+ 94: ^ ←↑↓ (*)
+ 95: _ PUNC
+ 96: ` PUNC
+ 97: a ABCDE
+ 98: b ABCDE
+ 99: c ABCDE
+100: d ABCDE
+101: e ABCDE
+102: f FGHI
+103: g FGHI
+104: h FGHI
+105: i FGHI
+106: j JKLM
+107: k JKLM
+108: l JKLM
+109: m JKLM
+110: n NOPQ
+111: o NOPQ
+112: p NOPQ
+113: q NOPQ
+114: r RSTUV
+115: s RSTUV
+116: t RSTUV
+117: u RSTUV
+118: v RSTUV
+119: w WXYZ
+120: x WXYZ
+121: y WXYZ
+122: z WXYZ
+123: { ()[]{}
+124: | MISC
+125: } ()[]{}
+126: ~ MISC
+127: ├
+128: :
+129: ʏ
+130: Ω MATH (*)
+131: ᴛ
+134: ▹
+138: [LF]
+
+Notes:
+10 is the real LF; if looks like [LF] in ALPHA, but performs an actual linefeed in AVIEW, PRA, etc.
+138, on the other hand, looks like [LF] in ALPHA, and never performs any actual linefeeds.
