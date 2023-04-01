@@ -24,6 +24,10 @@ was used to create the PortraitShort and Landscape skins for the Android and
 iOS versions. I didn't document SkinMuncher, but the source code plus the
 configuration files under plus42-skin/munch should help get started.
 
+plus42-ad.xcf
+The pop-up ad for Plus42, as it was shown by Free42 3.0.11. Preserved here for
+the sake of nostalgia.
+
 icon
 The original photograph of my real HP-42S, which I used to create the Free42
 icon, plus various stages of editing that I had to do along the way. I once
