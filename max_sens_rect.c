@@ -219,7 +219,7 @@ int main() {
             printf("Key: %d %d,%d,%d,%d", key, keys[key].left, keys[key].top, keys[key].right - keys[key].left, keys[key].bottom - keys[key].top);
             key++;
         }
-        printf(lines[i]);
+        printf("%s", lines[i]);
     }
     fflush(stdout);
 }
