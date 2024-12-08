@@ -4,6 +4,8 @@
 # That is a multi-resolution format, don't know how to deal with that.
 # I used https://icoconvert.com/ on a transparent original,
 # and that seems to work fine.
+# Rounded corner images created using https://pinetools.com/round-corners-image
+# with a radius of 220.
 # I used Gimp to create iphone/simpleserver/favicon.ico, selecting
 # 8 bpp output. Maybe that can also be automated using Netpbm.
 # Notice that this file has a rather different format from Free42.ico.
