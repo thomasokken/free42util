@@ -9,35 +9,17 @@
 # Notice that this file has a rather different format from Free42.ico.
 
 OPAQUE="$1"
-TRANSPARENT="$2"
+# TRANSPARENT="$2"
 
 echo "Opaque original: $OPAQUE"
-echo "Transparent original: $TRANSPARENT"
+# echo "Transparent original: $TRANSPARENT"
 
 OPAQUELIST=(
 120:iphone/icon.png
-40:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-40.png
-58:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-58.png
-60:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-60.png
-76:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-76.png
-80:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-80.png
-87:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-87.png
-114:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-114.png
-120:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-120.png
-120:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-121.png
-128:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-128.png
-136:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-136.png
-152:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-152.png
-167:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-167.png
-180:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-180.png
-192:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-192.png
-1024:iphone/Free42/Images.xcassets/AppIcon.appiconset/icon-1024.png
+1024:iphone/Free42/Images.xcassets/AppIcon.appiconset/any.png
 57:iphone/about-icon.png
 114:iphone/about-icon@2x.png
 64:iphone/simpleserver/site-icon.png
-)
-
-TRANSPARENTLIST=(
 64:mac/icon.iconset/icon_32x32@2x.png
 128:mac/icon.iconset/icon_128x128.png
 512:mac/icon.iconset/icon_256x256@2x.png
@@ -55,6 +37,9 @@ TRANSPARENTLIST=(
 # 72:android/app/src/main/res/drawable-hdpi/icon.png
 # 48:android/app/src/main/res/drawable-mdpi/icon.png
 # 192:android/app/src/main/res/drawable-xxxhdpi/icon.png
+)
+
+TRANSPARENTLIST=(
 )
 
 XPMLIST=(
@@ -80,8 +65,8 @@ for TARGET in ${XPMLIST[@]}
 do
     RES=`echo $TARGET | sed 's/^\(.*\):.*$/\1/'`
     IMG=`echo $TARGET | sed 's/^.*:\(.*\)$/\1/'`
-    pngtopnm "$TRANSPARENT" | pnmscale -xysize $RES $RES > icon_${RES}_xpm
-    pngtopnm -alpha "$TRANSPARENT" | pnmscale -xysize $RES $RES > icon_${RES}_mask
+    pngtopnm "$OPAQUE" | pnmscale -xysize $RES $RES > icon_${RES}_xpm
+    pngtopnm -alpha "$OPAQUE" | pnmscale -xysize $RES $RES > icon_${RES}_mask
     ppmtoxpm -alphamask=icon_${RES}_mask icon_${RES}_xpm > $IMG
 done
 
