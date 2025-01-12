@@ -16,6 +16,12 @@
 # 96:android/app/src/main/res/drawable-xhdpi/icon.png
 # 144:android/app/src/main/res/drawable-xxhdpi/icon.png
 # 192:android/app/src/main/res/drawable-xxxhdpi/icon.png
+#
+# Note: The Mac icons look a bit large, compared to most other apps' icons.
+# They are maximum size, which is not unheard of (other examples of apps with
+# maximally large icons on my computer are Kindle Classic, Mathematica, and
+# FileZilla), but most Mac apps appear to limit their icons to 13/16 of the
+# available width and height. Just so you know.
 
 if [ $1 == "free42" ]
 then
