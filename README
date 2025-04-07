@@ -11,8 +11,22 @@ helped me improve those functions a lot. I doubt it will be useful again, it
 really has served its purpose, but I'm keeping it for historical reasons, and
 because you never know.
 
-ScaleSkin.java
-A little utility to help with resizing skins.
+icon
+The original photograph of my real HP-42S, which I used to create the Free42
+icon, plus various stages of editing that I had to do along the way. I once
+managed to lose my icon sources and ended up regretting that intensely once I
+started needing some additional sizes; let's not let that happen again! I'm
+sure for someone who knows graphic design this stuff is easy, but for me it was
+a lot of work.
+
+keymaps
+Keymaps for non-U.S. keyboard layouts.
+
+max_sens_rect.c
+A little utility that takes a layout and increases the keys' sensitive
+rectangles as far as they can grow until they touch each other. This makes the
+keys easier to hit, compared to layouts where the sensitive rectangles match
+the display rectangles.
 
 plus42-skin
 SkinMuncher.java
@@ -28,22 +42,11 @@ plus42-ad.xcf
 The pop-up ad for Plus42, as it was shown by Free42 3.0.11. Preserved here for
 the sake of nostalgia.
 
-icon
-The original photograph of my real HP-42S, which I used to create the Free42
-icon, plus various stages of editing that I had to do along the way. I once
-managed to lose my icon sources and ended up regretting that intensely once I
-started needing some additional sizes; let's not let that happen again! I'm
-sure for someone who knows graphic design this stuff is easy, but for me it was
-a lot of work.
-
-max_sens_rect.c
-A little utility that takes a layout and increases the keys' sensitive
-rectangles as far as they can grow until they touch each other. This makes the
-keys easier to hit, compared to layouts where the sensitive rectangles match
-the display rectangles.
-
 rom2raw.c
 Tool for extracting user code from HP-41 ROM images.
+
+ScaleSkin.java
+A little utility to help with resizing skins.
 
 screen-shots
 The screen shots I used on the iOS App Store and Google Play Store. Keeping
